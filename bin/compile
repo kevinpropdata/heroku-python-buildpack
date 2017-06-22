@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-$BUILD_DIR=$1
-cd $BUILD_DIR
-python manage.py migrate --merge --no-initial --ignore-ghost-migrations
+BUILD_DIR=$1
+echo $BUILD_DIR
+python $BUILD_DIR/manage.py migrate --merge --no-initial --ignore-ghost-migrations
 gulp build
-python manage.py collectstatic
-python manage.py compress --force
+python $BUILD_DIR/manage.py collectstatic
+python $BUILD_DIR/manage.py compress --force
 
 
