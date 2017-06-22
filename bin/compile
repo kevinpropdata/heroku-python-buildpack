@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 BUILD_DIR=$1
 echo $BUILD_DIR
+export `heroku config -s`
 python $BUILD_DIR/manage.py migrate --merge --no-initial --ignore-ghost-migrations
 gulp build
 python $BUILD_DIR/manage.py collectstatic
